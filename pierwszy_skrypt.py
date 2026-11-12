@@ -11,11 +11,11 @@ def oblicz_wage():
     return sum(item["ilosc"] * item["waga"] for item in ekwipunek.values())
 
 def pokaz_przedmioty():
-    print(f"\n--- EQ | Złoto: {zloto} | Waga: {oblicz_wage()}/{max_waga} kg ---")
+    print(f"\n EQ  Złoto: {zloto}  Waga: {oblicz_wage()}/{max_waga} kg")
     if not ekwipunek:
         print("Ekwipunek jest pusty.")
     for nazwa, item in ekwipunek.items():
-        print(f"- {nazwa}: {item['ilosc']} szt., waga: {item['waga']}kg, cena: {item['wartosc']} gold")
+        print(f" {nazwa}: {item['ilosc']} szt., waga: {item['waga']}kg, cena: {item['wartosc']} gold")
 
 def dodaj_lub_kup_przedmiot():
     global zloto
@@ -45,7 +45,7 @@ def uzyj_lub_sprzedaj_przedmiot():
         print("Brak takiego przedmiotu!")
         return
     
-    wybor = input("Chcesz (1) Użyć czy (2) Sprzedać?: ")
+    wybor = input("Chcesz 1 Użyć czy 2 Sprzedać?: ")
     if wybor == "1":
         ekwipunek[nazwa]["ilosc"] -= 1
         print(f"Użyto: {nazwa}.")
@@ -61,17 +61,17 @@ def uzyj_lub_sprzedaj_przedmiot():
         del ekwipunek[nazwa]
 
 def sprawdz_przedmiot():
-    nazwa = input("\nSzukany przedmiot: ").lower().strip()
+    nazwa = input("\nSzukany przedmiot: ")
     if nazwa in ekwipunek:
         item = ekwipunek[nazwa]
-        print(f"Znaleziono {nazwa}: {item['ilosc']} szt., waga: {item['waga']}kg, cena: {item['wartosc']}")
+        print(f"Znaleziono {nazwa}: {item['ilosc']} szt, waga: {item['waga']}kg, cena: {item['wartosc']}")
     else:
         print("Brak przedmiotu w ekwipunku.")
 
 while True:
-    print("\n--- MENU ---")
-    print("1. Pokaż | 2. Kup/Dodaj | 3. Użyj/Sprzedaj | 4. Sprawdź | 5. Wyjdź")
-    wybor = input("Wybierz opcję (1-5): ")
+    print("\n MENU ")
+    print("1. Pokaż  2. Kup/Dodaj  3. Użyj/Sprzedaj  4. Sprawdź  5. Wyjdź")
+    wybor = input("Wybierz opcję: ")
     
     if wybor == "1": pokaz_przedmioty()
     elif wybor == "2": dodaj_lub_kup_przedmiot()
